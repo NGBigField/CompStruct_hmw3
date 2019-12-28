@@ -1,7 +1,5 @@
-//Hello World!
-
 #include "dflow_calc.h"
-#include <Vector>
+#include <vector>
 #include <algorithm>
 #include <iostream>
 
@@ -18,11 +16,11 @@ typedef struct Node_ {
 	struct Node_* pf1 = NULL;
 	struct Node_* pf2 = NULL;
 	
-	int oppCode = -1;
-	int instNum = -1;
+	unsigned int oppCode ;
+	int instNum ;
 	
-	int maxTime = -1;
-	int excTime = -1;
+	int maxTime ;
+	int excTime ;
 
 
 } Node;
@@ -93,7 +91,7 @@ void freeProgCtx(ProgCtx ctx) {
 	// pCTX pctx = dynamic_cast<pCTX>(ctx);
 	pCTX pctx = (pCTX)ctx ;
 	
-	for (int i = 0; i < pctx->instArray.size(); i++)
+	for (unsigned int i = 0; i < pctx->instArray.size(); i++)
 	{
 		delete pctx->instArray[i];
 	}
@@ -131,7 +129,7 @@ int getProgDepth(ProgCtx ctx) {
 
 	int max = 0;
 
-	for (int i = 0; i < pctx->instArray.size(); i++)
+	for (unsigned int i = 0; i < pctx->instArray.size(); i++)
 	{
 		int crntTime = pctx->instArray[i]->maxTime + pctx->instArray[i]->excTime  ;
 		max = (max < crntTime) ? crntTime  : max;
